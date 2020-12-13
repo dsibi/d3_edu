@@ -11,7 +11,11 @@ export default {
   input: 'src/index.js',
   output: {
     file: 'dist/bundle.js',
-    format: 'iife'
+    format: 'umd'
+  },
+  onwarn: function (warning, warn) {
+    if (warning.code === 'CIRCULAR_DEPENDENCY') return;
+    warn(warning);
   },
   plugins: [
     replace({
