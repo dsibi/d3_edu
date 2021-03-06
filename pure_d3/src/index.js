@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import * as topojson from "topojson-client";
 import us from "./us.json";
-import data from "./data.json";
+import data from "./wm.json"; 
 
 const width = 975;
 const height = 610;
@@ -34,7 +34,7 @@ const locations = svg
   .attr("font-size", 10)
   .data(data)
   .join("g");
-
+console.log(locations);
 const locationGroups = locations
   .append("g")
   .attr(
@@ -43,7 +43,7 @@ const locationGroups = locations
       `translate(${projection([longitude, latitude]).join(",")})`
   );
 
-locationGroups.append("circle").attr("r", 10);
+// locationGroups.append("circle").attr("r", 10);
 
 // locationGroups
 //   .append("text")
